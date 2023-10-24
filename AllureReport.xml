@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="FinalProjectAutomation">
+    <test name="Final Assignement in Automation Tests">
+        <classes>
+            <class name="com.magento.softwaretestingboard.tests.EcommerceShoppingFlowTest" />
+        </classes>
+    </test>
+</suite>

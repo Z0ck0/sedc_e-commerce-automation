@@ -8,34 +8,46 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckoutShipping {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class CheckoutShippingPage {
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+
+    private final By streetAddress = By.xpath("//*[@name='street[0]']");
+    private final By customerCity = By.xpath("//*[@name='city']");
+    private final By zipCode = By.xpath("//*[@name='postcode']");
+    private final By country = By.xpath("//*[@name='country_id']");
+    private final By phoneNumber = By.xpath("//*[@name='telephone']");
+    private final By shippingMethod = By.xpath("//*[@checked='true']");
+    private final By nextBtn = By.xpath("//*[@id='shipping-method-buttons-container']/div/button/span");
+    private final By itemsInCart = By.xpath("//*[@class='title']//*[contains(text(), '2')]");
+    private final By productOneName = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='product-item-name']");
+    private final By productOneQty = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='value']");
+    private final By productOnePrice = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='price']");
+    private final By productTwoName = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='product-item-name']");
+    private final By productTwoQty = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='value']");
+    private final By productTwoPrice = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='price']");
+    private final By orderSummaryLink = By.xpath("//div[@class='title']");
 
 
-    private By streetAddress = By.xpath("//*[@name='street[0]']");
-    private By customerCity = By.xpath("//*[@name='city']");
-    private By zipCode = By.xpath("//*[@name='postcode']");
-    private By country = By.xpath("//*[@name='country_id']");
-    private By phoneNumber = By.xpath("//*[@name='telephone']");
-    private By shippingMethod = By.xpath("//*[@checked='true']");
-    private By nextBtn = By.xpath("//*[@id='shipping-method-buttons-container']/div/button/span");
-    private By itemsInCart = By.xpath("//*[@class='title']//*[contains(text(), '2')]");
-    private By productOneName = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='product-item-name']");
-    private By productOneQty = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='value']");
-    private By productOnePrice = By.xpath("(//*[@class='product-item-details'])[1]//*[@class='price']");
-    private By productTwoName = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='product-item-name']");
-    private By productTwoQty = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='value']");
-    private By productTwoPrice = By.xpath("(//*[@class='product-item-details'])[2]//*[@class='price']");
-    private By orderSummaryLink = By.xpath("//div[@class='title']");
-
-
-
-
-
-    public CheckoutShipping(WebDriver driver, WebDriverWait wait) {
+    public CheckoutShippingPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
+    }
+
+    public boolean checkNorthMacedoniaIsListed(String optionText) {
+        WebElement selectStateFromDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(country));
+        Select select = new Select(selectStateFromDropDown);
+        select.selectByVisibleText(optionText);
+
+        boolean isOptionPresent = false;
+
+        for (WebElement option : select.getOptions()) {
+            if (option.getText().equals("North Macedonia")) {
+                isOptionPresent = true;
+                break;
+            }
+        }
+        return isOptionPresent;
     }
 
     public void enterStreetAddress(String street) {
@@ -80,7 +92,7 @@ public class CheckoutShipping {
         return cartCounterElement.getText();
     }
 
-    private String expectedCheckoutURL = "https://magento.softwaretestingboard.com/checkout/#shipping";
+    private final String expectedCheckoutURL = "https://magento.softwaretestingboard.com/checkout/#shipping";
 
     // Method to compare the current URL with the expected URL
     public boolean isOnCheckoutPage() {
@@ -91,7 +103,6 @@ public class CheckoutShipping {
         // Compare the actual URL with the expected URL
         return actualUrl.equals(expectedCheckoutURL);
     }
-
 
     //I have implemented a Retry Mechanism where I try to click "Place Order" button multiple times before declaring a failure.
     // I did this because the element is often not clickable due to transient issues.
@@ -109,21 +120,6 @@ public class CheckoutShipping {
         // If the loop completes without a successful click, you can throw an exception or log an error.
     }
 
-    public boolean checkNorthMacedoniaIsListed(String optionText) {
-        WebElement selectStateFromDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(country));
-        Select select = new Select(selectStateFromDropDown);
-        select.selectByVisibleText(optionText);
-
-        boolean isOptionPresent = false;
-
-        for (WebElement option : select.getOptions()) {
-            if (option.getText().equals("North Macedonia")) {
-                isOptionPresent = true;
-                break;
-            }
-        }
-        return isOptionPresent;
-    }
 
     public String getProductOneName() {
         WebElement cartProdOneName = wait.until(ExpectedConditions.visibilityOfElementLocated(productOneName));

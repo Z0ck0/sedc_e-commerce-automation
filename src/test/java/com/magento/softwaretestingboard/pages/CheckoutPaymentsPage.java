@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckoutPayments {
+public class CheckoutPaymentsPage {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -22,7 +22,7 @@ public class CheckoutPayments {
     private By shippingPrice = By.xpath("//*[@data-th='Shipping']");
     private By orderTotalPrice = By.xpath("(//*[@class='price'])[5]");
 
-    public CheckoutPayments(WebDriver driver, WebDriverWait wait) {
+    public CheckoutPaymentsPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }

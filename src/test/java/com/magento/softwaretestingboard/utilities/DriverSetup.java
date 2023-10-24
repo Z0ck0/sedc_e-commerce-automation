@@ -8,11 +8,12 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class BrowserManager {
+public class DriverSetup {
     private WebDriver driver;
     private ChromeOptions options;
     private FirefoxOptions firefoxOptions;
     private EdgeOptions edgeOptions;
+
 
 
     public WebDriver initiateDriver(String browserName) {

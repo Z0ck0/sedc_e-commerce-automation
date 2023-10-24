@@ -5,7 +5,7 @@ import java.util.UUID;
 
 
 
-public class RandomCredentialsGenerator {
+public class CredentialsGenerator {
 
     // Declare a class-level variables to store the random email & password
     private static String randomEmail;

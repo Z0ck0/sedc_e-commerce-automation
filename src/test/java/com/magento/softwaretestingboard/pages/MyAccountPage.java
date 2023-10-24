@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MyAccount {
+public class MyAccountPage{
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -18,10 +18,11 @@ public class MyAccount {
     private By accountContactInformation = By.xpath("//*[@class='box box-information']//*[@class='box-content']");
 
 
-    public MyAccount(WebDriver driver, WebDriverWait wait) {
+    public MyAccountPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
+
 
 
     public String getSuccessMessage() {
@@ -41,7 +42,7 @@ public class MyAccount {
         return actualUrl.equals(expectedUrl);
     }
 
-    public String isSignOutLinkVisible(){
+    public String isSignOutLinkVisible() {
         WebElement customerMenuDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(customerMenuLink));
         customerMenuDropDown.click();
         WebElement signOutLinkOnDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(signOutLink));
@@ -65,7 +66,7 @@ public class MyAccount {
         return storeMenu.isDisplayed();
     }
 
-    public String getAccountContactInformation(){
+    public String getAccountContactInformation() {
         WebElement accContactInfo = wait.until(ExpectedConditions.visibilityOfElementLocated(accountContactInformation));
         return accContactInfo.getText();
     }

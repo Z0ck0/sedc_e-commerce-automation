@@ -6,21 +6,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckoutSuccess {
+public class CheckoutSuccessPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    private By ThankYouForPurchaseMessage = By.xpath("//*[contains(text(), 'Thank you for your purchase!')]");
-    private By continueShoppingButton = By.xpath("//span[contains(text(), 'Continue Shopping')]");
-    private By printReceiptLink = By.xpath("//*[contains(text(), 'Print receipt')]");
+    private final By ThankYouForPurchaseMessage = By.xpath("//*[contains(text(), 'Thank you for your purchase!')]");
+    private final By continueShoppingButton = By.xpath("//span[contains(text(), 'Continue Shopping')]");
+    private final By printReceiptLink = By.xpath("//*[contains(text(), 'Print receipt')]");
 
 
-    public CheckoutSuccess(WebDriver driver, WebDriverWait wait){
+    public CheckoutSuccessPage(WebDriver driver, WebDriverWait wait){
         this.driver = driver;
         this.wait = wait;
     }
 
-    private String expectedSuccessURL = "https://magento.softwaretestingboard.com/checkout/onepage/success/";
+    private final String expectedSuccessURL = "https://magento.softwaretestingboard.com/checkout/onepage/success/";
 
     // Method to compare the current URL with the expected URL
     public boolean isOnSuccessPage() {
