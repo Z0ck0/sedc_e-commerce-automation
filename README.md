@@ -1,13 +1,13 @@
 # SEDC_FinalProjectAutomation
+Project Overview:
+This project is an automation testing framework for the Magento Software Testing Board eCommerce website. The framework is designed based on the Page Object Model (POM) and is implemented using Selenium, TestNG, and Java. It encompasses a suite of tests covering various aspects of the eCommerce website (https://magento.softwaretestingboard.com/. ), including user registration, product selection, cart management, and the complete shopping flow.
 
-For the purpose of the final project we will use the following website: https://magento.softwaretestingboard.com/. 
+Test Statistics:
+Total Number of Tests: 3
 
-Your task will be to create new project implement all necessary dependencies and use the POM design pattern.
+Total Number of Assertions: Numerous assertions are used throughout the test cases to validate different aspects of the website, including page navigation, element presence, and content correctness.
 
-We need to create 3 tests to cover the following scenarios:
+POM (Page Object Model):
+The framework follows the Page Object Model (POM) design pattern. Each page of the website is represented by a dedicated page class (e.g., HomePage, LoginPage). These page classes encapsulate the page's elements and actions, making the code more modular, maintainable, and readable.Project Overview: This project is an automation testing framework for the Magento Software Testing Board eCommerce website. The framework is designed based on the Page Object Model (POM) and is implemented using Selenium, TestNG, and Java. It encompasses a suite of tests covering various aspects of the eCommerce website, including user registration, product selection, cart management, and the complete shopping flow. Test Statistics: Total Number of Tests: 3 Total Number of Assertions: Numerous assertions are used throughout the test cases to validate different aspects of the website, including page navigation, element presence, and content correctness. POM (Page Object Model): The framework follows the Page Object Model (POM) design pattern. Each page of the website is represented by a dedicated page class (e.g., HomePage, LoginPage). These page classes encapsulate the page's elements and actions, making the code more modular, maintainable, and readable.
 
- 1. Register an account.
-
- 2. Add 2 products in the shopping cart and click proceed to checkout.
-
-3. End to end test where we cover the whole flow(register accout, adding two products, proceed to checkout, payment etc).
+Skills: Test Automation · Java · Selenium WebDriver · TestNG
